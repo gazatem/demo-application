@@ -13,8 +13,10 @@ class BlogsTableSeeder extends Seeder
 
         $faker = new Faker\Generator();
         $faker->addProvider(new Faker\Provider\Lorem($faker));
-        foreach (range(1, 500) as $item) {
-            Blog::create(['title' => ucfirst($faker->sentence()), 'post' => $faker->text(500), 'user_id' => 1, 'category_id' => 1]);
+        foreach (range(1, 100) as $item) {
+
+            $category = \App\Category::inRandomOrder()->first();
+            $category->blogs()->save(new Blog(['title' => ucfirst($faker->sentence()), 'post' => $faker->text(500), 'user_id' => 1]));
         }
 
     }

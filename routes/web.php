@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * for debugging application route
+ */
+Route::get('debug', function (){
+
 });
+
+Auth::routes();
+
+Route::get('/', 'BlogController@index')->name('home');
+Route::get('/posts/{blog}', 'BlogController@post')->name('post');
+Route::get('/categories/{category}', 'BlogController@category')->name('category');
+Route::get('/admin', 'AdminController@category')->name('admin');
