@@ -41,6 +41,10 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->configureMonologUsing(function ($monolog) {
+    $monolog->pushHandler(new \Gazatem\Glog\Glog());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

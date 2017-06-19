@@ -2,14 +2,14 @@
 
 use App\Category;
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
         DB::table('categories')->delete();
-        $faker = new Faker\Generator();
-        $faker->addProvider(new Faker\Provider\Lorem($faker));
+        $faker = Faker::create();
         foreach (range(1, 20) as $item) {
             Category::create(['name' => ucfirst($faker->word())]);
         }
