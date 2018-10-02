@@ -50,6 +50,12 @@ class BlogController extends Controller
     public function post(Blog $blog)
     {
         Log::info("blog-home", ['message' => 'Blog post page visited: ' . str_limit($blog->title, 25)]);
+        
+        // An example for testing notification
+        // This will send an email, becuase we have put blog-post channel with error 
+        // level logging in notification config array
+        Log::error('blog-post', ['message' => 'This is an error log and will trigger notification service']);
+        
         $categories = Category::orderBy('name', 'asc')->get();
         return view('blog', compact('blog', 'categories'));
     }

@@ -1,5 +1,7 @@
 <?php
-
+/**
+* This is a sample config file for glog
+*/
 
 return [
 
@@ -11,7 +13,7 @@ return [
 
     'channels' => ['blog-home', 'blog-post', 'blog-category', 'user-login'],
 
-    'notification' => [],
+    'notification' => ['blog-post' => ['ERROR', 'NOTICE']],
 
     'mail_subject' => 'gLog notification mail',
 
